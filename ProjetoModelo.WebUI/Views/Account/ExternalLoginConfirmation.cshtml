@@ -1,0 +1,59 @@
+﻿@model ProjetoModelo.WebUI.Models.ExternalLoginConfirmationViewModel
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<section class="bloco formularios">
+
+    <div class="row container">
+
+        <div class="col s12 center">
+            <h2 class="titulo light white-text">@ViewData["Title"]</h2>
+        </div>
+
+        <h3>Associe sua conta @ViewBag.LoginProvider</h3>
+
+        <div class="col s12 card-panel">
+
+            @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <h4>Formulário de associação</h4>
+                <hr />
+                @Html.ValidationSummary(true)
+                <p>
+                    Você foi autenticado com sucesso através da conta <strong>@ViewBag.LoginProvider</strong>.
+                    Por favor preencha ou verifique os dados abaixo e clique em Registrar
+                </p>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(m => m.Name)
+                    @Html.LabelFor(m => m.Name)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(m => m.LastName)
+                    @Html.LabelFor(m => m.LastName)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(m => m.Email)
+                    @Html.LabelFor(m => m.Email)
+                </div>
+
+                <p class="col s12">
+                    <button class="btn blue-logo right" type="submit">
+                        Registrar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </p>
+            }
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,41 @@
+﻿@model ProjetoModelo.WebUI.Models.AlunosListView
+@{
+    ViewData["Title"] = "Lista de Alunos";
+}
+<section class="bloco aluno">
+
+    <div class="row container">
+
+        <div class="col s12 card-panel">
+
+            <table class="responsive-table highlight">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Bairro</th>
+                        <th>Cep</th>
+                        <th>Cidade</th>
+                        <th>Uf</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Alunos)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@Html.ActionLink(item.Nome, "Visualiza", new { id = item.Id })</td>
+                            <td>@item.Endereco</td>
+                            <td>@item.Bairro</td>
+                            <td>@item.Cep</td>
+                            <td>@item.Cidade</td>
+                            <td>@item.Uf</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

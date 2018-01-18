@@ -1,0 +1,144 @@
+﻿@model ProjetoModelo.Domain.Entities.Aluno
+
+@{
+    ViewData["Title"] = "Editar informações";
+}
+
+<section class="bloco formularios">
+
+    <div class="row container">
+
+        <div class="col s12 center">
+            <h2 class="titulo light white-text">@ViewData["Title"]</h2>
+        </div>
+
+        <div class="col s12 card-panel">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Nome)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Endereco)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Bairro)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Cep)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Cidade)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Uf, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Uf)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Fone1, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Fone1)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Fone2, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Fone2)
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <p>Gênero</p>
+                    @Html.RadioButtonFor(model => model.Sexo, "M", new { @id = "Sexo1" })
+                    <label for="Sexo1">Masculino</label>
+                    @Html.RadioButtonFor(model => model.Sexo, "F", new { @id = "Sexo2" })
+                    <label for="Sexo2">Feminino</label>
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Cpf)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Rg, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Rg)
+                </div>
+
+                <div class="col s12 m6 l6">
+                    @Html.LabelFor(model => model.Nascimento)
+                    @Html.EditorFor(model => model.Nascimento, new { htmlAttributes = new { @class = "datepicker" } })
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Idade, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Idade)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @autocomplete = "off", @type = "email" } })
+                    @Html.LabelFor(model => model.Email)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.EstadoCivil, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.EstadoCivil)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Profissao, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Profissao)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Empresa, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Empresa)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Debito, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Debito)
+                </div>
+
+                <div class="input-field col s12 m6 l6">
+                    @Html.EditorFor(model => model.Objetivo, new { htmlAttributes = new { @autocomplete = "off" } })
+                    @Html.LabelFor(model => model.Objetivo)
+                </div>
+
+                <p class="col s12 m6 l6">
+                    @if (Model.Matriculado == "S")
+                    {
+                        <input type="checkbox" id="Matriculado" name="Matriculado" value="true" checked="checked" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="Matriculado" name="Matriculado" value="true" />
+                    }
+                    @Html.LabelFor(model => model.Matriculado)
+                </p>
+
+                <p class="col s12">
+                    <button class="btn blue-logo right" type="submit">
+                        Enviar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </p>
+
+            }
+
+        </div>
+    </div>
+</section>

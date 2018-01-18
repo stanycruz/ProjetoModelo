@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="bloco manage">
+
+    <div class="row container">
+
+        <div class="col s12 center">
+            <h2 class="titulo light white-text">@ViewData["Title"]</h2>
+        </div>
+        <div class="col s3"></div>
+        <div class="card-panel col s6">
+            <p>
+                @Html.ActionLink("Criar Nova", "Create")
+            </p>
+            <table class="responsive-table highlight">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

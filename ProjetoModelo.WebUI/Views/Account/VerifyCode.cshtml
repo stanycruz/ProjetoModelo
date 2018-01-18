@@ -1,0 +1,49 @@
+﻿@model ProjetoModelo.WebUI.Models.VerifyCodeViewModel
+@{
+    ViewData["Title"] = "Validação de código de verificação";
+}
+
+<section class="bloco formularios">
+
+    <div class="row container">
+
+        <div class="col s12 center">
+            <h2 class="titulo light white-text">@ViewData["Title"].</h2>
+        </div>
+
+        <div class="col l3"></div>
+
+        <div class="col s12 m12 l6 card-panel">
+
+            @using (Html.BeginForm("VerifyCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @Html.Hidden("provider", @Model.Provider)
+                <p>@ViewBag.Status <a href="#" title="@ViewBag.CodigoAcesso">Passe o Mouse</a></p>
+
+                <div class="input-field col s12">
+                    @Html.EditorFor(m => m.Code, new { htmlAttributes = new { @autocomplete = "off", @type = "number" } })
+                    @Html.LabelFor(m => m.Code)
+                </div>
+
+                <p class="col s12">
+                    <input type="checkbox" id="RememberBrowser" name="RememberBrowser" value="true" />
+                    @Html.LabelFor(m => m.RememberBrowser)
+                    @Html.HiddenFor(m => m.UserId)
+                </p>
+
+                <p class="col s12">
+                    <button class="btn blue-logo right" type="submit">
+                        Enviar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </p>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,61 @@
+﻿@model ProjetoModelo.WebUI.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section id="loginForm" class="bloco formularios">
+
+    <div class="row container">
+
+        <div class="col s12 center">
+            <h2 class="titulo light white-text">@ViewData["Title"]</h2>
+        </div>
+
+        <div class="col l3"></div>
+
+        <div class="col s12 m12 l6 card-panel">
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+
+                <div class="input-field col s12">
+                    @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @autocomplete = "off", @type = "email" } })
+                    @Html.LabelFor(m => m.Email)
+                </div>
+
+                <div class="input-field col s12">
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.LabelFor(m => m.Password)
+                </div>
+
+                <div class="col s6">
+                    <input type="checkbox" id="RememberMe" name="RememberMe" value="true" />
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+
+                <p class="col s6">
+                    <button class="btn blue-logo right" type="submit">
+                        Login
+                        <i class="material-icons right">send</i>
+                    </button>
+                </p>
+
+                <p class="col s6">
+                    @Html.ActionLink("Registrar uma nova conta?", "Register")
+                </p>
+                <p class="col s6">
+                    @Html.ActionLink("Esqueceu sua senha?", "ForgotPassword")
+                </p>
+            }
+
+            @Html.Partial("_ExternalLoginsListPartial", new ProjetoModelo.WebUI.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
