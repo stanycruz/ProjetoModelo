@@ -12,9 +12,8 @@
         public double Forearm { get; set; }
         public double UpperThigh { get; set; }
         public double AverageThigh { get; set; }
-        public double MeanThigh { get; set; }
         public double LowerThigh { get; set; }
         public double Leg { get; set; }
-        public PhysicalEvaluation PhysicalEvaluation { get; set; }
+        public PhysicalEvaluation PhysicalEvaluationId { get; set; }
     }
 }

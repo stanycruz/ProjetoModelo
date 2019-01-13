@@ -13,5 +13,6 @@
         public double Bitrocanterian { get; set; }
         public double Femular { get; set; }
         public double Maleolar { get; set; }
+        public PhysicalEvaluation PhysicalEvaluationId { get; set; }
     }
 }
