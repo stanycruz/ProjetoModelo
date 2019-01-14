@@ -15,6 +15,7 @@ namespace ProjetoModelo.WebUI.Data
         public DbSet<Anthropometric> Anthropometrics { get; set; }
         public DbSet<SkinFold> SkinFolds { get; set; }
         public DbSet<Diameter> Diameters { get; set; }
+        public DbSet<Circumference> Circumferences { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,6 +35,7 @@ namespace ProjetoModelo.WebUI.Data
             modelBuilder.ApplyConfiguration(new AnthropometricConfiguration());
             modelBuilder.ApplyConfiguration(new SkinFoldConfiguration());
             modelBuilder.ApplyConfiguration(new DiameterConfiguration());
+            modelBuilder.ApplyConfiguration(new CircumferenceConfiguration());
         }
     }
 }

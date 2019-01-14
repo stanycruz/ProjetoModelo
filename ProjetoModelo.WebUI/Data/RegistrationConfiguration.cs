@@ -37,6 +37,10 @@ namespace ProjetoModelo.WebUI.Data
                 .HasColumnName("desconto");
 
             builder
+                .Property(r => r.FinalValue)
+                .HasColumnName("valor_final");
+
+            builder
                 .Property(r => r.Situation)
                 .HasColumnName("situacao")
                 .HasColumnType("varchar(20)");

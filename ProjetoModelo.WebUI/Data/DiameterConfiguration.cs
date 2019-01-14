@@ -56,7 +56,7 @@ namespace ProjetoModelo.WebUI.Data
                 .HasColumnName("maleolar");
 
             builder
-                .HasOne(sf => sf.PhysicalEvaluationId)
+                .HasOne(d => d.PhysicalEvaluationId)
                 .WithMany(pe => pe.Diameters)
                 .HasForeignKey("avaliacao_fisica_id");
         }
