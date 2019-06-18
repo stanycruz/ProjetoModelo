@@ -60,7 +60,7 @@ namespace ProjetoModelo.WebUI.Data
                 .HasColumnName("perna");
 
             builder
-                .Property<double>("avaliacao_fisica_id");
+                .Property<long>("avaliacao_fisica_id");
 
             builder
                 .HasOne(a => a.PhysicalEvaluationId)
